@@ -5,7 +5,7 @@ import java.util.Set;
 
 /**
  * Clase utilitaria para obtener los algoritmos hash (MessageDigest)
- * disponibles en la JVM a través de los proveedores de seguridad.
+ * disponibles en Java a través de los proveedores de seguridad.
  */
 public class AlgoritmosHash {
 
@@ -25,14 +25,12 @@ public class AlgoritmosHash {
         // Recorrer proveedores y sus servicios
         for (int i = 0; i < proveedores.length; i++) {
             Provider proveedor = proveedores[i];
-
             for (Provider.Service servicio : proveedor.getServices()) {
                 if ("MessageDigest".equalsIgnoreCase(servicio.getType())) {
                     algoritmos.add(servicio.getAlgorithm());
                 }
             }
         }
-
         return algoritmos;
     }
 
@@ -43,12 +41,11 @@ public class AlgoritmosHash {
 
         Set<String> hashes = obtenerAlgoritmosHashDisponibles();
 
-        System.out.println("Algoritmos hash disponibles en la JVM:");
+        System.out.println("Algoritmos HASH disponibles:");
 
-        // Foreach normal sobre el Set
+        // For que recorre el Set y lo muestra
         for (String hash : hashes) {
             System.out.println(hash);
         }
     }
 }
-
